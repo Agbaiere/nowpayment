@@ -1,0 +1,24 @@
+<!-- templates/create_payment.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Payment</title>
+</head>
+<body>
+    <h1>Create Payment</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required><br><br>
+        <label for="currency">Currency:</label>
+        <input type="text" id="currency" name="currency" required><br><br>
+        <label for="pay_currency">Pay with:</label>
+        <select id="pay_currency" name="pay_currency" required>
+            {% for currency in supported_currencies %}
+                <option value="{{ currency }}">{{ currency }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Pay with NOWPayments</button>
+    </form>
+</body>
+</html>
